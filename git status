@@ -1,0 +1,42 @@
+[33mcommit 39d05d952244beb93bfdbc04a226361f6c74ca60[m
+Merge: 2bf79df 078ea2a
+Author: yangyang2018 <shayu2017@163.com>
+Date:   Fri Mar 31 20:01:15 2017 +0800
+
+    解决冲突
+
+[33mcommit 2bf79df5296ac289504023a760ff5675070cd2ff[m
+Author: yangyang2018 <shayu2017@163.com>
+Date:   Fri Mar 31 19:58:05 2017 +0800
+
+    在主分支上修改了readme.txt文件
+
+[33mcommit 078ea2a0939f8273bb49dffcedf26634a7077259[m
+Author: yangyang2018 <shayu2017@163.com>
+Date:   Fri Mar 31 19:54:49 2017 +0800
+
+    在feature 上修改了readme.txt的最后一行
+
+[33mcommit b5635812f8e3f50012952f9b5a6c65b6e5165a77[m
+Author: yangyang2018 <shayu2017@163.com>
+Date:   Fri Mar 31 19:48:06 2017 +0800
+
+    在feature1上修改readme.txt的最后一行
+
+[33mcommit fa6980ea9e335bd75b44eb6ef1fdf462c875e67d[m
+Author: yangyang2018 <shayu2017@163.com>
+Date:   Fri Mar 31 19:33:30 2017 +0800
+
+    try again
+
+[33mcommit 381165296dac72a8019eb2354a62f33d38eb9381[m
+Author: hzhz2018 <shayu2017@163.com>
+Date:   Thu Mar 30 07:40:08 2017 +0800
+
+    第一次提交
+
+[33mcommit dd2fa8bf903820a3ac9f7b9f056c3d31351f737c[m
+Author: yangyang2018 <shayu2017@163.com>
+Date:   Thu Mar 30 07:39:22 2017 +0800
+
+    Initial commit
