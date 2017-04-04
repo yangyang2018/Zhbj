@@ -1,0 +1,25 @@
+package com.app.yangyang.zhbj.util;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+
+/**
+ * Created by yangyang on 2017/4/4.
+ */
+
+public class PrefUtils {
+
+    private static final String FREE_NAME = "config";
+
+    public static boolean getBoolean(Context ctx, String key, boolean defaultValue) {
+        SharedPreferences sp = ctx.getSharedPreferences(FREE_NAME, Context.MODE_PRIVATE);
+        return sp.getBoolean(key, defaultValue);
+    }
+
+    public static void setBoolean(Context ctx, String key, boolean value) {
+        SharedPreferences sp = ctx.getSharedPreferences(FREE_NAME, Context.MODE_PRIVATE);
+        sp.edit().putBoolean(key, value).commit();
+    }
+
+
+}
