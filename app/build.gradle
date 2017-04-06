@@ -34,4 +34,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:support-v4:25.3.0'
     compile project(':SlidingMenuLibrary')
+    compile files('libs/xUtils-2.6.14.jar')
 }
