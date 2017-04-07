@@ -2,6 +2,7 @@ package com.app.yangyang.zhbj.base.impl;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.Gravity;
 import android.widget.TextView;
 
@@ -12,6 +13,7 @@ import com.app.yangyang.zhbj.base.BasePager;
  */
 
 public class NewsCenterPager extends BasePager {
+    private static  final  String TAG = "NEWSCENTERPAGER";
 
     public NewsCenterPager(Activity context) {
         super(context);
@@ -19,6 +21,7 @@ public class NewsCenterPager extends BasePager {
 
     @Override
     public void initData() {
+        Log.d(TAG,"初始化新闻中心数据");
         tv_title.setText("智慧北京");
         setSlidingMenuEnable(true);
 
