@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.app.yangyang.zhbj.HomeActivity;
 import com.app.yangyang.zhbj.R;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
  * Created by yangyang on 2017/4/6.
@@ -20,11 +19,10 @@ public class BasePager {
     public  Activity mActivity;
     public View mRootView;
 
-    @ViewInject(R.id.tv_title)
     public TextView  tv_title;
 
-    @ViewInject(R.id.fl_content)
     public FrameLayout  fl_content;
+
     public ImageButton btn_menu;
 
     public BasePager(Activity  context) {
@@ -40,8 +38,26 @@ public class BasePager {
 
         btn_menu = (ImageButton) mRootView.findViewById(R.id.btn_menu);
 
+        btn_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggleSlidingMenu();
+            }
+        });
 
     }
+
+    private void toggleSlidingMenu() {
+
+        HomeActivity  mainUI = (HomeActivity) mActivity;
+
+        SlidingMenu slidingMenu = mainUI.getSlidingMenu();
+
+        slidingMenu.toggle();//切换状态
+
+
+    }
+
 
     public   void  initData(){
 

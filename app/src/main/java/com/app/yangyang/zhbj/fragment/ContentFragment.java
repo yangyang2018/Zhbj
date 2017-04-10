@@ -144,6 +144,11 @@ public class ContentFragment extends BaseFragment {
 
     }
 
+    public  NewsCenterPager  getNewsCenterPager(){
+
+        return (NewsCenterPager) mPagerList.get(1);
+    }
+
 
 
 

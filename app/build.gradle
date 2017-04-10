@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
+    useLibrary 'org.apache.http.legacy'
+
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
 
@@ -35,4 +37,6 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.0'
     compile project(':SlidingMenuLibrary')
     compile files('libs/xUtils-2.6.14.jar')
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.mcxiaoke.viewpagerindicator:library:2.4.1'
 }

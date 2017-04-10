@@ -41,4 +41,27 @@ public class HomeActivity extends SlidingFragmentActivity {
 
 
     }
+
+
+    public  LeftMenuFragment  getLeftMenuFragment(){
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        LeftMenuFragment leftMenuFragment = (LeftMenuFragment) fragmentManager.findFragmentByTag(FRAGMENT_LEFT_MENU);
+
+
+        return  leftMenuFragment;
+
+    }
+
+    public  ContentFragment  getContentMenuFragment(){
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        ContentFragment contentFragment = (ContentFragment) fragmentManager.findFragmentByTag(FRAGMENT_CONTENT_MENU);
+
+
+        return  contentFragment;
+
+    }
 }
