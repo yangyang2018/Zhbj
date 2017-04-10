@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/yangyang/Workspace/Zhbj/SlidingMenuLibrary/assets"/><source path="/Users/yangyang/Workspace/Zhbj/SlidingMenuLibrary/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/yangyang/Workspace/Zhbj/SlidingMenuLibrary/src/debug/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\github\Zhbj\SlidingMenuLibrary\assets"/><source path="E:\github\Zhbj\SlidingMenuLibrary\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="E:\github\Zhbj\SlidingMenuLibrary\src\debug\assets"/></dataSet></merger>

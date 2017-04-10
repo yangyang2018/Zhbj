@@ -2,4 +2,5 @@
     <string name="app_name">智慧北京</string>
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_guide">GuideActivity</string>
+    <string name="title_activity_test_ok_http">TestOkHttpActivity</string>
 </resources>

@@ -32,11 +32,17 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    //    ompile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:support-v4:25.3.0'
+    compile 'com.android.support:support-v4:25+'
     compile project(':SlidingMenuLibrary')
     compile files('libs/xUtils-2.6.14.jar')
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.mcxiaoke.viewpagerindicator:library:2.4.1'
+    compile 'com.squareup.okio:okio:1.5.0'
+    compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    compile 'com.google.code.gson:gson:2.8.0'
+    //引入rxJava
+    compile 'io.reactivex:rxjava:1.0.14'
+    compile 'io.reactivex:rxandroid:1.0.1'
 }
