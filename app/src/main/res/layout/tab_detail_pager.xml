@@ -3,12 +3,36 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.app.yangyang.zhbj.view.TopNewsViewPager
-        android:id="@+id/vp_news"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp">
+        android:layout_height="200dp">
+        <com.app.yangyang.zhbj.view.TopNewsViewPager
+            android:id="@+id/vp_news"
+            android:layout_width="match_parent"
+            android:background="#565656"
+            android:layout_height="200dp">
+        </com.app.yangyang.zhbj.view.TopNewsViewPager>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:padding="5dp"
+            android:background="#a000">
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                android:text="新闻标题"/>
 
-    </com.app.yangyang.zhbj.view.TopNewsViewPager>
+
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
     <ListView
         android:id="@+id/lv_list"
         android:layout_width="match_parent"

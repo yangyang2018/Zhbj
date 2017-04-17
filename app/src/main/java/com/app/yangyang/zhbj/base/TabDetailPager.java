@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.app.yangyang.zhbj.R;
 import com.app.yangyang.zhbj.domain.NewsData;
@@ -21,11 +22,13 @@ import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
+import java.util.ArrayList;
+
 /**
  * Created by yangyang on 2017/4/6.
  */
 
-public class TabDetailPager extends BaseMenuDetailPager {
+public class TabDetailPager extends BaseMenuDetailPager implements ViewPager.OnPageChangeListener {
 
     public NewsData.NewsTypeData tabData;
 //    private TextView textView;
@@ -35,6 +38,10 @@ public class TabDetailPager extends BaseMenuDetailPager {
 
     @ViewInject(R.id.vp_news)
     private ViewPager  mViewPager;
+
+    @ViewInject(R.id.tv_title)
+    private TextView tv_title;
+    private ArrayList<TabData.TopNewsData> topnews;
 
     public TabDetailPager(Activity activity, NewsData.NewsTypeData data) {
         super(activity);
@@ -54,6 +61,8 @@ public class TabDetailPager extends BaseMenuDetailPager {
         View view = View.inflate(mActivity, R.layout.tab_detail_pager, null);
 
         ViewUtils.inject(this,view);
+        mViewPager.setOnPageChangeListener(this);
+
         return view;
     }
 
@@ -65,6 +74,8 @@ public class TabDetailPager extends BaseMenuDetailPager {
         getDataFromServer();
 
     }
+
+
 
     public void getDataFromServer() {
         HttpUtils utils = new HttpUtils();
@@ -97,7 +108,27 @@ public class TabDetailPager extends BaseMenuDetailPager {
 
         System.out.println("页签详情页解析结果"+tabDetailData.data.toString());
 
+        topnews = tabDetailData.data.topnews;
         mViewPager.setAdapter(new TopNewsAdapter());
+        tv_title.setText(topnews.get(0).title);
+
+
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        tv_title.setText(topnews.get(position).title);
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
 
     }
 
@@ -127,11 +158,11 @@ public class TabDetailPager extends BaseMenuDetailPager {
             ImageView imageView = new ImageView(mActivity);
 //            imageView.setBackgroundResource(R.drawable.topnews_item_default);
 
-            imageView.setImageResource(R.drawable.topnews_item_default);
+//            imageView.setImageResource(R.drawable.topnews_item_default);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
 
-            TabData.TopNewsData topNewsData = tabDetailData.data.topnews.get(position);
+            TabData.TopNewsData topNewsData = topnews.get(position);
             bitmapUtils.display(imageView,topNewsData.topimage);
             container.addView(imageView);
             return imageView;

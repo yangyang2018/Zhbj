@@ -8,7 +8,6 @@ import android.widget.Button;
 
 import com.app.yangyang.zhbj.R;
 import com.app.yangyang.zhbj.common.UrlValue;
-import com.app.yangyang.zhbj.util.OkhttpUtils;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -58,27 +57,27 @@ public class TestOkHttpActivity extends Activity {
     private void testGetTranslates() {
 
 
-        OkhttpUtils.getInstance().doPost(TestOkHttpActivity.this,UrlValue.JK1002,null,false,new OkhttpUtils.MyCallback(){
-            @Override
-            public void onSuccess(String result) {
-                Log.d("onSuccess",result);
-            }
-
-            @Override
-            public void onFailture(Exception e) {
-                Log.d("onFailture",""+e);
-            }
-
-            @Override
-            public void onStart() {
-                Log.d("onStart","你是猪吗?");
-            }
-
-            @Override
-            public void onFinish() {
-                Log.d("onFinish","你是猪吗?");
-            }
-        });
+//        OkhttpUtils.getInstance().doPost(TestOkHttpActivity.this,UrlValue.JK1002,null,false,new OkhttpUtils.MyCallback(){
+//            @Override
+//            public void onSuccess(String result) {
+//                Log.d("onSuccess",result);
+//            }
+//
+//            @Override
+//            public void onFailture(Exception e) {
+//                Log.d("onFailture",""+e);
+//            }
+//
+//            @Override
+//            public void onStart() {
+//                Log.d("onStart","你是猪吗?");
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//                Log.d("onFinish","你是猪吗?");
+//            }
+//        });
 
     }
 

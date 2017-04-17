@@ -1,14 +1,18 @@
 [
     {
-        "merged": "E:\\Users\\yangyang\\Workspace\\Zhbj\\SlidingMenuLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\slidingmenumain.xml",
-        "source": "E:\\Users\\yangyang\\Workspace\\Zhbj\\SlidingMenuLibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\slidingmenumain.xml"
+        "merged": "/Users/yangyang/Workspace/Zhbj/E:\\Users\\yangyang\\Workspace\\Zhbj\\SlidingMenuLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\slidingmenumain.xml",
+        "source": "/Users/yangyang/Workspace/Zhbj/E:\\Users\\yangyang\\Workspace\\Zhbj\\SlidingMenuLibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\slidingmenumain.xml"
     },
     {
-        "merged": "E:\\Users\\yangyang\\Workspace\\Zhbj\\library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\slidingmenumain.xml",
-        "source": "E:\\Users\\yangyang\\Workspace\\Zhbj\\library\\build\\intermediates\\bundles\\debug\\res\\layout\\slidingmenumain.xml"
+        "merged": "/Users/yangyang/Workspace/Zhbj/SlidingMenuLibrary/build/intermediates/res/merged/androidTest/debug/layout/slidingmenumain.xml",
+        "source": "/Users/yangyang/Workspace/Zhbj/SlidingMenuLibrary/build/intermediates/bundles/debug/res/layout/slidingmenumain.xml"
     },
     {
-        "merged": "E:\\github\\Zhbj\\SlidingMenuLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\slidingmenumain.xml",
-        "source": "E:\\github\\Zhbj\\SlidingMenuLibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\slidingmenumain.xml"
+        "merged": "/Users/yangyang/Workspace/Zhbj/E:\\Users\\yangyang\\Workspace\\Zhbj\\library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\slidingmenumain.xml",
+        "source": "/Users/yangyang/Workspace/Zhbj/E:\\Users\\yangyang\\Workspace\\Zhbj\\library\\build\\intermediates\\bundles\\debug\\res\\layout\\slidingmenumain.xml"
+    },
+    {
+        "merged": "/Users/yangyang/Workspace/Zhbj/E:\\github\\Zhbj\\SlidingMenuLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\slidingmenumain.xml",
+        "source": "/Users/yangyang/Workspace/Zhbj/E:\\github\\Zhbj\\SlidingMenuLibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\slidingmenumain.xml"
     }
 ]
