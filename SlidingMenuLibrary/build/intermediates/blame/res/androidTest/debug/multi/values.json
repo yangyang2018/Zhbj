@@ -1,29 +1,5 @@
 [
     {
-        "outputFile": "/Users/yangyang/Workspace/Zhbj/E:\\Users\\yangyang\\Workspace\\Zhbj\\SlidingMenuLibrary\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 14,
-                    "startColumn": 4,
-                    "startOffset": 1092,
-                    "endColumn": 42,
-                    "endOffset": 1130
-                },
-                "from": {
-                    "file": "/Users/yangyang/Workspace/Zhbj/E:\\Users\\yangyang\\Workspace\\Zhbj\\SlidingMenuLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 14,
-                        "startColumn": 4,
-                        "startOffset": 1092,
-                        "endColumn": 42,
-                        "endOffset": 1130
-                    }
-                }
-            }
-        ]
-    },
-    {
         "outputFile": "/Users/yangyang/Workspace/Zhbj/SlidingMenuLibrary/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
         "map": [
             {
@@ -36,54 +12,6 @@
                 },
                 "from": {
                     "file": "/Users/yangyang/Workspace/Zhbj/SlidingMenuLibrary/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 14,
-                        "startColumn": 4,
-                        "startOffset": 1092,
-                        "endColumn": 42,
-                        "endOffset": 1130
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "/Users/yangyang/Workspace/Zhbj/E:\\github\\Zhbj\\SlidingMenuLibrary\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 14,
-                    "startColumn": 4,
-                    "startOffset": 1092,
-                    "endColumn": 42,
-                    "endOffset": 1130
-                },
-                "from": {
-                    "file": "/Users/yangyang/Workspace/Zhbj/E:\\github\\Zhbj\\SlidingMenuLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 14,
-                        "startColumn": 4,
-                        "startOffset": 1092,
-                        "endColumn": 42,
-                        "endOffset": 1130
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "/Users/yangyang/Workspace/Zhbj/E:\\Users\\yangyang\\Workspace\\Zhbj\\library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 14,
-                    "startColumn": 4,
-                    "startOffset": 1092,
-                    "endColumn": 42,
-                    "endOffset": 1130
-                },
-                "from": {
-                    "file": "/Users/yangyang/Workspace/Zhbj/E:\\Users\\yangyang\\Workspace\\Zhbj\\library\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,

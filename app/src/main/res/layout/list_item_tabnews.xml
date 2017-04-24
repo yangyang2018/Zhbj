@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+
+
+    <!--android:src="@drawable/news_default"-->
+    <ImageView
+        android:id="@+id/iv_item_pc"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/tv_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/iv_item_pc"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:text="新闻标题"
+        android:textColor="#000"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv_item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2017-01-19 16:20"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="16sp"
+        android:layout_alignBottom="@id/iv_item_pc"
+        android:layout_alignStart="@+id/tv_item_title" />
+</RelativeLayout>
