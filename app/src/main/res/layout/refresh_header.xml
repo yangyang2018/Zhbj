@@ -5,9 +5,7 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="10dp"
+        android:padding="10dp"
         >
         <ImageView
             android:id="@+id/tv_arrow"
@@ -41,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="2015-03-10 17:01:01"
+            android:text="最后刷新:2015-03-10 17:01:01"
             android:textColor="@android:color/darker_gray"
             android:textSize="16sp"/>
     </LinearLayout>
