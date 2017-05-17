@@ -7,8 +7,8 @@ android {
     buildToolsVersion "25.0.2"
 
     aaptOptions {
-     cruncherEnabled = false
-     useNewCruncher = false
+        cruncherEnabled = false
+        useNewCruncher = false
     }
 
     defaultConfig {
@@ -33,16 +33,35 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     //    ompile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:support-v4:25+'
     compile project(':SlidingMenuLibrary')
     compile files('libs/xUtils-2.6.14.jar')
+    compile 'com.google.code.gson:gson:2.8.0'
+    //引入rxJava
+    compile 'com.android.support:support-v4:25.3.0'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.mcxiaoke.viewpagerindicator:library:2.4.1'
     compile 'com.squareup.okio:okio:1.5.0'
     compile 'com.squareup.okhttp3:okhttp:3.6.0'
-    compile 'com.google.code.gson:gson:2.8.0'
-    //引入rxJava
     compile 'io.reactivex:rxjava:1.0.14'
     compile 'io.reactivex:rxandroid:1.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    compile files('libs/MobCommons-2017.0412.1554.jar')
+    compile files('libs/MobTools-2017.0412.1554.jar')
+    compile files('libs/ShareSDK-Alipay-2.8.3.jar')
+    compile files('libs/ShareSDK-Alipay-Core-2.8.3.jar')
+    compile files('libs/ShareSDK-Alipay-Moments-2.8.3.jar')
+    compile files('libs/ShareSDK-Core-2.8.3.jar')
+    compile files('libs/ShareSDK-Evernote-2.8.3.jar')
+    compile files('libs/ShareSDK-Facebook-2.8.3.jar')
+    compile files('libs/ShareSDK-GooglePlus-2.8.3.jar')
+    compile files('libs/ShareSDK-QQ-2.8.3.jar')
+    compile files('libs/ShareSDK-QZone-2.8.3.jar')
+    compile files('libs/ShareSDK-TencentWeibo-2.8.3.jar')
+    compile files('libs/ShareSDK-Wechat-2.8.3.jar')
+    compile files('libs/ShareSDK-Wechat-Core-2.8.3.jar')
+    compile files('libs/ShareSDK-Wechat-Favorite-2.8.3.jar')
+    compile files('libs/ShareSDK-Wechat-Moments-2.8.3.jar')
+    compile files('libs/ShareSDK-YouDao-2.8.3.jar')
+    compile files('libs/ShareSDK-YouDao-2.8.3.jar')
 }

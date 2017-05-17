@@ -8,7 +8,7 @@
         android:padding="10dp"
         >
         <ImageView
-            android:id="@+id/tv_arrow"
+            android:id="@+id/iv_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -17,6 +17,7 @@
             android:id="@+id/pb_refresh_head"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/custom_progress"
             android:visibility="invisible"
             android:layout_gravity="center"
             />

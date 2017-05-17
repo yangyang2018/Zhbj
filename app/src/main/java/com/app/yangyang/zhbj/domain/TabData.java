@@ -35,7 +35,7 @@ public class TabData {
         public  boolean comment;
         public  String commentlist;
         public  String commenturl;
-        public  int id;
+        public  String id;
         public  String pubdate;
         public  String title;
         public  String listimage;
