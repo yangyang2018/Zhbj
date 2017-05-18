@@ -1,6 +1,7 @@
 package com.app.yangyang.zhbj.base.impl;
 
 import android.app.Activity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import com.app.yangyang.zhbj.base.menudetail.TopicMenuDetailPager;
 import com.app.yangyang.zhbj.domain.NewsData;
 import com.app.yangyang.zhbj.fragment.LeftMenuFragment;
 import com.app.yangyang.zhbj.global.GlobalContants;
+import com.app.yangyang.zhbj.util.CacheUtils;
 import com.google.gson.Gson;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -28,7 +30,7 @@ import java.util.ArrayList;
  */
 
 public class NewsCenterPager extends BasePager {
-    private static  final  String TAG = "NEWSCENTERPAGER";
+    private static final String TAG = "NEWSCENTERPAGER";
 
     private ArrayList<BaseMenuDetailPager> menuDetailPagers;
     private NewsData newsData;
@@ -38,21 +40,22 @@ public class NewsCenterPager extends BasePager {
         super(context);
     }
 
-    public void  getDataFromServer() {
-        HttpUtils utils =  new HttpUtils();
+    public void getDataFromServer() {
+        HttpUtils utils = new HttpUtils();
         utils.send(HttpRequest.HttpMethod.GET, GlobalContants.CATEGORIES_URL, new RequestCallBack<String>() {
 
             @Override
             public void onSuccess(ResponseInfo<String> responseInfo) {
                 String result = responseInfo.result;
-                System.out.println("返回结果："+result);
+                System.out.println("返回结果：" + result);
                 parseData(result);
-
+                //put data into  cache
+                CacheUtils.setCache(GlobalContants.CATEGORIES_URL,result,mActivity);
             }
 
             @Override
             public void onFailure(HttpException e, String s) {
-                Toast.makeText(mActivity,s,Toast.LENGTH_SHORT).show();
+                Toast.makeText(mActivity, s, Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
         });
@@ -61,7 +64,7 @@ public class NewsCenterPager extends BasePager {
 
     @Override
     public void initData() {
-        Log.d(TAG,"初始化新闻中心数据");
+        Log.d(TAG, "初始化新闻中心数据");
         tv_title.setText("新闻");
         setSlidingMenuEnable(true);
 //
@@ -73,9 +76,13 @@ public class NewsCenterPager extends BasePager {
 
 //        fl_content.addView(textView);
 
-
+        //get data from cache
+        String value = CacheUtils.getCache(GlobalContants.CATEGORIES_URL, mActivity);
+        if (!TextUtils.isEmpty(value)) {
+            parseData(value);
+        }
+        //slient get data from server
         getDataFromServer();
-
 
 
 
@@ -83,24 +90,25 @@ public class NewsCenterPager extends BasePager {
 
     /**
      * 解析数据
+     *
      * @param result
      */
     private void parseData(String result) {
         Gson gson = new Gson();
 
-        newsData = gson.fromJson(result,NewsData.class);
+        newsData = gson.fromJson(result, NewsData.class);
 
-        System.out.println("解析结果"+ newsData);
+        System.out.println("解析结果" + newsData);
 
-        HomeActivity  homeActivity = (HomeActivity) mActivity;
+        HomeActivity homeActivity = (HomeActivity) mActivity;
 
-        LeftMenuFragment leftMenuFragment =  homeActivity.getLeftMenuFragment();
+        LeftMenuFragment leftMenuFragment = homeActivity.getLeftMenuFragment();
 
         leftMenuFragment.setMenuData(newsData);
 
         //设置4个菜单详情页数据
         menuDetailPagers = new ArrayList<>();
-        menuDetailPagers.add(new NewsMenuDetailPager(mActivity,newsData.data.get(0).children));
+        menuDetailPagers.add(new NewsMenuDetailPager(mActivity, newsData.data.get(0).children));
         menuDetailPagers.add(new TopicMenuDetailPager(mActivity));
         menuDetailPagers.add(new PhotoMenuDetailPager(mActivity));
         menuDetailPagers.add(new InteractMenuDetailPager(mActivity));
@@ -110,9 +118,10 @@ public class NewsCenterPager extends BasePager {
 
     /**
      * 设置菜单详情页
+     *
      * @param position
      */
-    public   void  setCurrentMenuDetailPager(int position){
+    public void setCurrentMenuDetailPager(int position) {
 
         BaseMenuDetailPager menuDetailPager = menuDetailPagers.get(position);
 
@@ -128,8 +137,6 @@ public class NewsCenterPager extends BasePager {
 
 
     }
-
-
 
 
 }

@@ -173,6 +173,8 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
     private void showShare() {
         OnekeyShare oks = new OnekeyShare();
         //关闭sso授权
+
+
         oks.disableSSOWhenAuthorize();
         // title标题，印象笔记、邮箱、信息、微信、人人网、QQ和QQ空间使用
         oks.setTitle("新浪微博");

@@ -21,6 +21,7 @@ import com.app.yangyang.zhbj.R;
 import com.app.yangyang.zhbj.domain.NewsData;
 import com.app.yangyang.zhbj.domain.TabData;
 import com.app.yangyang.zhbj.global.GlobalContants;
+import com.app.yangyang.zhbj.util.CacheUtils;
 import com.app.yangyang.zhbj.util.PrefUtils;
 import com.app.yangyang.zhbj.view.RefreshListView;
 import com.google.gson.Gson;
@@ -168,6 +169,10 @@ public class TabDetailPager extends BaseMenuDetailPager implements ViewPager.OnP
 
 //        tv_.setText(tabData.title);
 
+        String value = CacheUtils.getCache(mUrl, mActivity);
+        if (!TextUtils.isEmpty(value)) {
+            parseData(value,false);
+        }
         getDataFromServer();
 
     }
@@ -184,6 +189,7 @@ public class TabDetailPager extends BaseMenuDetailPager implements ViewPager.OnP
                 System.out.println("页签详情页数据" + result);
                 parseData(result,false);
                 lv_list.onRefreshComplete(true);
+                CacheUtils.setCache(mUrl,responseInfo.result,mActivity);
             }
 
             @Override
