@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:background="@drawable/pic_list_item_bg"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iv_item_pic"
+            android:layout_width="300dp"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/news_pic_default"/>
+
+        <TextView
+            android:id="@+id/tv_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="带你看世界各地的租房"
+            android:textSize="22sp"
+            android:singleLine="true"
+            android:padding="10dp"
+            android:gravity="center"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

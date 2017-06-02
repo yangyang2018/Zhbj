@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -69,6 +72,8 @@ public class TabDetailPager extends BaseMenuDetailPager implements ViewPager.OnP
     private NewsAdapter newsAdapter;
     private String myMoreUrl;
 
+    private Handler mHandler;
+
 
     public TabDetailPager(Activity activity, NewsData.NewsTypeData data) {
         super(activity);
@@ -102,14 +107,14 @@ public class TabDetailPager extends BaseMenuDetailPager implements ViewPager.OnP
 
             @Override
             public void onLoadmore() {
-                Log.d("onLoadmore",myMoreUrl+"");
+                Log.d("onLoadmore", myMoreUrl + "");
                 //加载下一页
-                if (myMoreUrl!=null) {
+                if (myMoreUrl != null) {
                     getMoreDataFromServer();
-                }else{
+                } else {
                     System.out.println("我是有底线的哦" +
                             "2017");
-                    Toast.makeText(mActivity,"我是有底线的",Toast.LENGTH_LONG);
+                    Toast.makeText(mActivity, "我是有底线的", Toast.LENGTH_LONG);
                     lv_list.onRefreshComplete(false);
                 }
 
@@ -120,26 +125,26 @@ public class TabDetailPager extends BaseMenuDetailPager implements ViewPager.OnP
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                System.out.println("dian ji le"+position);
+                System.out.println("dian ji le" + position);
 
-                String ids = PrefUtils.getString(mActivity,"read_ids","");
+                String ids = PrefUtils.getString(mActivity, "read_ids", "");
                 String targetId = tabnews.get(position).id;
-                if(!ids.contains(targetId)){
+                if (!ids.contains(targetId)) {
 
-                    System.out.println("targetId"+targetId);
-                    ids = ids + targetId+",";
+                    System.out.println("targetId" + targetId);
+                    ids = ids + targetId + ",";
 
 
-                    PrefUtils.setString(mActivity,"read_ids",ids);
+                    PrefUtils.setString(mActivity, "read_ids", ids);
                 }
 //                newsAdapter.notifyDataSetChanged();
 
                 changeTitleColor(view);
 
-                Bundle  bundle =  new Bundle();
-                bundle.putString("url",tabnews.get(position).url);
-                System.out.println("url"+tabnews.get(position).url);
-                Intent  intent  =  new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putString("url", tabnews.get(position).url);
+                System.out.println("url" + tabnews.get(position).url);
+                Intent intent = new Intent();
                 intent.putExtras(bundle);
                 intent.setClass(mActivity, NewsDetailActivity.class);
 
@@ -155,10 +160,11 @@ public class TabDetailPager extends BaseMenuDetailPager implements ViewPager.OnP
 
     /**
      * 改变一点击item的颜色
+     *
      * @param view
      */
     private void changeTitleColor(View view) {
-        TextView  tvTitle = (TextView) view.findViewById(R.id.tv_item_title);
+        TextView tvTitle = (TextView) view.findViewById(R.id.tv_item_title);
         tvTitle.setTextColor(Color.GRAY);
 
     }
@@ -171,7 +177,7 @@ public class TabDetailPager extends BaseMenuDetailPager implements ViewPager.OnP
 
         String value = CacheUtils.getCache(mUrl, mActivity);
         if (!TextUtils.isEmpty(value)) {
-            parseData(value,false);
+            parseData(value, false);
         }
         getDataFromServer();
 
@@ -187,15 +193,15 @@ public class TabDetailPager extends BaseMenuDetailPager implements ViewPager.OnP
             public void onSuccess(ResponseInfo<String> responseInfo) {
                 String result = responseInfo.result;
                 System.out.println("页签详情页数据" + result);
-                parseData(result,false);
+                parseData(result, false);
                 lv_list.onRefreshComplete(true);
-                CacheUtils.setCache(mUrl,responseInfo.result,mActivity);
+                CacheUtils.setCache(mUrl, responseInfo.result, mActivity);
             }
 
             @Override
             public void onFailure(HttpException e, String s) {
 
-                Toast.makeText(mActivity,s,Toast.LENGTH_SHORT);
+                Toast.makeText(mActivity, s, Toast.LENGTH_SHORT);
                 e.printStackTrace();
                 lv_list.onRefreshComplete(false);
 
@@ -215,14 +221,14 @@ public class TabDetailPager extends BaseMenuDetailPager implements ViewPager.OnP
             public void onSuccess(ResponseInfo<String> responseInfo) {
                 String result = responseInfo.result;
                 System.out.println("页签详情页数据" + result);
-                parseData(result,true);
+                parseData(result, true);
                 lv_list.onRefreshComplete(true);
             }
 
             @Override
             public void onFailure(HttpException e, String s) {
 
-                Toast.makeText(mActivity,s,Toast.LENGTH_SHORT);
+                Toast.makeText(mActivity, s, Toast.LENGTH_SHORT);
                 e.printStackTrace();
                 lv_list.onRefreshComplete(false);
 
@@ -236,15 +242,15 @@ public class TabDetailPager extends BaseMenuDetailPager implements ViewPager.OnP
      * @param result
      */
 
-    private void parseData(String result,boolean isLoadmore) {
+    private void parseData(String result, boolean isLoadmore) {
         Gson gson = new Gson();
         tabDetailData = gson.fromJson(result, TabData.class);
 
         System.out.println("页签详情页解析结果" + tabDetailData.data.toString());
         String more = tabDetailData.data.more;
         if (!TextUtils.isEmpty(more)) {
-            myMoreUrl =GlobalContants.SERVER_URL+tabDetailData.data.more;
-        }else {
+            myMoreUrl = GlobalContants.SERVER_URL + tabDetailData.data.more;
+        } else {
             myMoreUrl = null;
         }
 
@@ -275,18 +281,31 @@ public class TabDetailPager extends BaseMenuDetailPager implements ViewPager.OnP
 
             }
 
+            if (mHandler == null) {
+                mHandler = new Handler() {
+                    @Override
+                    public void handleMessage(Message msg) {
+                        int mCurrentItem = mViewPager.getCurrentItem();
+                        if (mCurrentItem < topnews.size() - 1) {
+                            mCurrentItem++;
+                        } else {
+                            mCurrentItem = 0;
+                        }
+                        mViewPager.setCurrentItem(mCurrentItem);
+                        mHandler.sendEmptyMessageDelayed(0, 3000);
 
-        }else {
+                    }
+                };
+                mHandler.sendEmptyMessageDelayed(0, 3000);
+            }
+
+
+        } else {
             ArrayList<TabData.TabNewsData> morenews = tabDetailData.data.news;
             tabnews.addAll(morenews);
             newsAdapter.notifyDataSetChanged();
 
         }
-
-
-
-
-
 
 
     }
@@ -342,6 +361,8 @@ public class TabDetailPager extends BaseMenuDetailPager implements ViewPager.OnP
             TabData.TopNewsData topNewsData = topnews.get(position);
             bitmapUtils.display(imageView, topNewsData.topimage);
             container.addView(imageView);
+
+            //imageView.setOnTouchListener(new ImageOnTouchListener());
             return imageView;
         }
 
@@ -399,12 +420,12 @@ public class TabDetailPager extends BaseMenuDetailPager implements ViewPager.OnP
 
             bitmapUtils.display(viewHolder.iv_item_pc, data.listimage);
 
-            String ids = PrefUtils.getString(mActivity,"read_ids","");
-            System.out.println("从sp读取："+ids);
-            if (ids.contains(getItem(position).id+"")) {
+            String ids = PrefUtils.getString(mActivity, "read_ids", "");
+            System.out.println("从sp读取：" + ids);
+            if (ids.contains(getItem(position).id + "")) {
 
                 viewHolder.tv_item_title.setTextColor(Color.GRAY);
-            }else{
+            } else {
                 viewHolder.tv_item_title.setTextColor(Color.BLACK);
             }
 
@@ -419,5 +440,26 @@ public class TabDetailPager extends BaseMenuDetailPager implements ViewPager.OnP
         private TextView tv_item_date;
 
 
+    }
+
+
+    class ImageOnTouchListener implements View.OnTouchListener {
+
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    mHandler.removeCallbacksAndMessages(null);
+                    break;
+                case MotionEvent.ACTION_CANCEL:
+                    mHandler.sendEmptyMessageDelayed(0, 3000);
+                    break;
+                case MotionEvent.ACTION_UP:
+                    mHandler.sendEmptyMessageDelayed(0, 3000);
+                    break;
+            }
+            return true;
+        }
     }
 }

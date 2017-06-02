@@ -3,6 +3,7 @@ package com.app.yangyang.zhbj.base.impl;
 import android.app.Activity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.app.yangyang.zhbj.HomeActivity;
@@ -110,7 +111,7 @@ public class NewsCenterPager extends BasePager {
         menuDetailPagers = new ArrayList<>();
         menuDetailPagers.add(new NewsMenuDetailPager(mActivity, newsData.data.get(0).children));
         menuDetailPagers.add(new TopicMenuDetailPager(mActivity));
-        menuDetailPagers.add(new PhotoMenuDetailPager(mActivity));
+        menuDetailPagers.add(new PhotoMenuDetailPager(mActivity,btn_photo));
         menuDetailPagers.add(new InteractMenuDetailPager(mActivity));
 
         setCurrentMenuDetailPager(0);
@@ -134,6 +135,13 @@ public class NewsCenterPager extends BasePager {
 
 
         menuDetailPager.initData();
+
+        if(menuDetailPager instanceof PhotoMenuDetailPager){
+            btn_photo.setVisibility(View.VISIBLE);
+        }else {
+            btn_photo.setVisibility(View.INVISIBLE);
+
+        }
 
 
     }
