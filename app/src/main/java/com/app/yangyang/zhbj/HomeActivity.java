@@ -3,6 +3,7 @@ package com.app.yangyang.zhbj;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.DisplayMetrics;
 
 import com.app.yangyang.zhbj.fragment.ContentFragment;
 import com.app.yangyang.zhbj.fragment.LeftMenuFragment;
@@ -26,7 +27,18 @@ public class HomeActivity extends SlidingFragmentActivity {
         setBehindContentView(R.layout.left_menu);
         SlidingMenu slidingMenu = getSlidingMenu();
         slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-        slidingMenu.setBehindOffset(500);
+
+        DisplayMetrics  displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+        System.out.println(getWindowManager().getDefaultDisplay().getWidth());
+        System.out.println(getWindowManager().getDefaultDisplay().getHeight());
+
+        System.out.println(displayMetrics);
+
+
+
+        slidingMenu.setBehindOffset(displayMetrics.widthPixels*500/1080);
         initFragment();
     }
 

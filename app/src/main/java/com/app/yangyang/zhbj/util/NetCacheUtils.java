@@ -90,8 +90,13 @@ public class NetCacheUtils {
 
                 if (conn.getResponseCode() == 200) {
                     InputStream inputStream = conn.getInputStream();
-                    bitmap = BitmapFactory.decodeStream(inputStream);
+                    //图片压缩
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inSampleSize = 2;//宽高压宿为原来的 1／2
+                    options.inPreferredConfig = Bitmap.Config.RGB_565;//设置图片的格式
 
+
+                    bitmap = BitmapFactory.decodeStream(inputStream,null,options);
                 }
 
             } catch (Exception e) {

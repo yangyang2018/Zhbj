@@ -1,10 +1,12 @@
 package com.app.yangyang.zhbj;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -28,11 +30,16 @@ public class GuideActivity extends Activity {
     private int mPointDistance;
     private View view_red;
 
+    private DisplayMetrics  displayMetrics;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_guide);
+        displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        getDisplayMetrics(this);
         initView();
         initUI();
 
@@ -71,7 +78,7 @@ public class GuideActivity extends Activity {
         for (int i = 0; i < mImageIds.length; i++) {
             View point = new View(this);
             point.setBackgroundResource(R.drawable.shape_point_gray);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(10, 10);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams((int)(10*displayMetrics.density),(int)(10*displayMetrics.density));
 
             if (i > 0) {
 
@@ -155,5 +162,29 @@ public class GuideActivity extends Activity {
         }
     }
 
+
+    public static String getDisplayMetrics(Context cx) {
+        String str = "";
+        DisplayMetrics dm = new DisplayMetrics();
+        //取得DisplayMetrics对象方法一
+        //dm = cx.getApplicationContext().getResources().getDisplayMetrics();
+        //取得DisplayMetrics对象方法二
+        ((Activity)cx).getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int screenWidth = dm.widthPixels;
+        int screenHeight = dm.heightPixels;
+        float density = dm.density;
+        float xdpi = dm.xdpi;
+        float ydpi = dm.ydpi;
+
+        str += "The absolute width:" + String.valueOf(screenWidth) + "pixels\n";
+        str += "The absolute heightin:" + String.valueOf(screenHeight) + "pixels\n";
+        str += "The logical density of the display.:" + String.valueOf(density)
+                + "\n";
+        str += "X dimension :" + String.valueOf(xdpi) + "pixels per inch\n";
+        str += "Y dimension :" + String.valueOf(ydpi) + "pixels per inch\n";
+
+        System.out.println(str);
+        return str;
+    }
 
 }

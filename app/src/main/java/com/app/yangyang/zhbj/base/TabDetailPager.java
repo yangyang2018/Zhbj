@@ -25,6 +25,7 @@ import com.app.yangyang.zhbj.domain.NewsData;
 import com.app.yangyang.zhbj.domain.TabData;
 import com.app.yangyang.zhbj.global.GlobalContants;
 import com.app.yangyang.zhbj.util.CacheUtils;
+import com.app.yangyang.zhbj.util.MyBitmapUtils;
 import com.app.yangyang.zhbj.util.PrefUtils;
 import com.app.yangyang.zhbj.view.RefreshListView;
 import com.google.gson.Gson;
@@ -375,13 +376,16 @@ public class TabDetailPager extends BaseMenuDetailPager implements ViewPager.OnP
 
     class NewsAdapter extends BaseAdapter {
 
-        private BitmapUtils bitmapUtils;
+//        private BitmapUtils bitmapUtils;
+        private MyBitmapUtils myBitmapUtils;
 
         public NewsAdapter() {
 
-            bitmapUtils = new BitmapUtils(mActivity);
 
-            bitmapUtils.configDefaultLoadingImage(R.drawable.pic_item_list_default);
+            myBitmapUtils = new MyBitmapUtils();
+//            bitmapUtils = new BitmapUtils(mActivity);
+//
+//            bitmapUtils.configDefaultLoadingImage(R.drawable.pic_item_list_default);
         }
 
 
@@ -418,7 +422,8 @@ public class TabDetailPager extends BaseMenuDetailPager implements ViewPager.OnP
             viewHolder.tv_item_title.setText(data.title);
             viewHolder.tv_item_date.setText(data.pubdate);
 
-            bitmapUtils.display(viewHolder.iv_item_pc, data.listimage);
+//            bitmapUtils.display(viewHolder.iv_item_pc, data.listimage);
+            myBitmapUtils.display(viewHolder.iv_item_pc, data.listimage);
 
             String ids = PrefUtils.getString(mActivity, "read_ids", "");
             System.out.println("从sp读取：" + ids);
